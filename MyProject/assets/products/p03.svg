@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-label="Kids fleece hoodie">
+  <rect width="480" height="600" fill="#efe0cc"/>
+  <path d="M120 210h240v250H120z" fill="#c96a2b"/>
+  <circle cx="240" cy="180" r="70" fill="#d98545"/>
+  <rect x="150" y="300" width="180" height="90" fill="#b85b22"/>
+  <text x="240" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#5a3a22">Kids hoodie</text>
+</svg>

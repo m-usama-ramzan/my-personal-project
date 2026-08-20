@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-label="Embroidered waistcoat">
+  <rect width="480" height="600" fill="#e8dfd0"/>
+  <path d="M160 140h160l36 40v260H124V180z" fill="#3d2a1f"/>
+  <path d="M200 140c10 70 70 70 80 0" fill="#2b1d16"/>
+  <circle cx="240" cy="260" r="18" fill="#c9a227"/>
+  <text x="240" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#3d2a1f">Waistcoat</text>
+</svg>

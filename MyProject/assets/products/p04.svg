@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-label="Stitched cotton kurti">
+  <rect width="480" height="600" fill="#eadfd6"/>
+  <path d="M170 140h140l50 60v280H120V200z" fill="#7a3b4a"/>
+  <path d="M170 140c20 50 120 50 140 0" fill="#5e2c38"/>
+  <line x1="180" y1="280" x2="300" y2="280" stroke="#f1d9c8" stroke-width="4"/>
+  <text x="240" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#4a2a32">Cotton kurti</text>
+</svg>

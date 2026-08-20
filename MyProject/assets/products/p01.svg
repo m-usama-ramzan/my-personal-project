@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-label="Printed lawn 2-piece">
+  <rect width="480" height="600" fill="#e7d5c4"/>
+  <rect x="70" y="90" width="340" height="420" fill="#f4ebe3"/>
+  <circle cx="160" cy="220" r="46" fill="#c45c4a" opacity="0.85"/>
+  <circle cx="250" cy="300" r="70" fill="#8a4b3b" opacity="0.35"/>
+  <circle cx="320" cy="210" r="38" fill="#2f5d4a" opacity="0.45"/>
+  <text x="240" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#4a3b32">Lawn 2-piece</text>
+</svg>

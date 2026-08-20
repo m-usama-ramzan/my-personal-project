@@ -3,74 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name — Home</title>
+  <title>Brand's Leftover | Fashion Clearance</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="logo" href="#top">Your Name</a>
-    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">Menu</button>
-    <nav class="nav" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#work">Work</a>
+  <div class="drawer-overlay" data-close-drawer hidden></div>
+
+  <aside id="site-drawer" class="drawer" aria-hidden="true">
+    <div class="drawer__head">
+      <a class="logo logo--drawer" href="#home">
+        <img src="assets/logo.png" alt="Brand's Leftover" width="960" height="958">
+      </a>
+      <button class="icon-button" type="button" data-close-drawer aria-label="Close menu">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <nav class="drawer__nav" aria-label="Site">
+      <a href="#home">Home</a>
+      <a href="#new">New Collection</a>
+      <a href="#sale">Sale</a>
+      <a href="#women">Women</a>
+      <a href="#unstitched">Unstitched</a>
+      <a href="#stitched">Stitched</a>
+      <a href="#accessories">Accessories</a>
+      <a id="whatsapp-link" href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+      <a href="#about">About Us</a>
       <a href="#contact">Contact</a>
     </nav>
+  </aside>
+
+  <header class="site-header">
+    <a class="logo" href="#home">
+      <img src="assets/logo.png" alt="Brand's Leftover" width="960" height="958">
+    </a>
+    <button
+      class="icon-button hamburger"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-drawer"
+      data-open-drawer
+    >
+      <span class="hamburger__bar"></span>
+      <span class="hamburger__bar"></span>
+      <span class="hamburger__bar"></span>
+    </button>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <p class="eyebrow">Personal site</p>
-      <h1>Hello. I make things and share them here.</h1>
-      <p class="lede">Replace this line with one sentence about who you are and what you do.</p>
-      <a class="button" href="#contact">Say hello</a>
+  <main>
+    <section id="view-home">
+      <section class="hero" id="home-hero">
+        <p class="eyebrow">Leftover stock · Pakistan</p>
+        <h1>Fresh clearance lots, ready to browse.</h1>
+        <p class="lede">
+          Surplus clothing bought from dealers and shown here as a simple catalogue.
+          Orders are handled later on WhatsApp — this site is for looking, not checkout.
+        </p>
+        <a class="button" href="#products">View products</a>
+      </section>
+
+      <section id="products" class="products">
+        <div class="products__intro">
+          <div>
+            <h2 id="catalogue-title">Catalogue</h2>
+            <p id="catalogue-note">Sample stock for layout. Replace these items with your real lots.</p>
+          </div>
+          <form id="search-form" class="search-form" role="search">
+            <label class="search-form__label" for="search-input">Search products</label>
+            <input id="search-input" type="search" name="q" placeholder="Search name, category, or ID" autocomplete="off">
+            <button class="button" type="submit">Search</button>
+          </form>
+        </div>
+        <div id="product-grid" class="product-grid"></div>
+      </section>
     </section>
 
-    <section id="about" class="section">
-      <h2>About</h2>
-      <p>
-        Write a short bio. Mention what you care about, what you are learning, or what you want
-        people to know. Keep it honest and brief.
+    <section id="view-detail" class="detail-view" hidden></section>
+
+    <section id="view-about" class="page-block" hidden>
+      <p class="eyebrow">About</p>
+      <h1>A small clearance lot, shown simply.</h1>
+      <p class="lede">
+        Brand's Leftover is a Pakistani clothing clearance catalogue. Leftover and surplus stock is
+        bought from dealers and sold mainly on TikTok and Facebook. This website is only a
+        showcase so you can browse what is in hand.
+      </p>
+      <p>There is no cart or online payment. If something looks right, use WhatsApp to ask.</p>
+    </section>
+
+    <section id="view-contact" class="page-block" hidden>
+      <p class="eyebrow">Contact</p>
+      <h1>Ask about a piece.</h1>
+      <p class="lede">
+        Mention the product ID when you message. Replace the WhatsApp number in
+        <code>products.js</code> with your real number.
       </p>
       <p>
-        This page is static HTML and CSS. Host it on GitHub Pages for free. No domain or paid
-        tools required.
-      </p>
-    </section>
-
-    <section id="work" class="section">
-      <h2>Work</h2>
-      <ul class="cards">
-        <li>
-          <h3>Project one</h3>
-          <p>Describe a project, a hobby, or something you built. Link it when you have a URL.</p>
-        </li>
-        <li>
-          <h3>Project two</h3>
-          <p>Another card. Swap the titles and text for your real work.</p>
-        </li>
-        <li>
-          <h3>Project three</h3>
-          <p>You can add or remove cards in <code>index.html</code>.</p>
-        </li>
-      </ul>
-    </section>
-
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p>Email is free and needs no extra service.</p>
-      <p>
-        <a class="button" href="mailto:you@example.com">you@example.com</a>
+        <a id="contact-whatsapp" class="button" href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
       </p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Built with HTML and CSS. Hosted for free.</p>
+    <a class="logo logo--footer" href="#home">
+      <img src="assets/logo.png" alt="Brand's Leftover" width="960" height="958">
+    </a>
+    <p>Brand's Leftover</p>
   </footer>
 
+  <script src="products.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

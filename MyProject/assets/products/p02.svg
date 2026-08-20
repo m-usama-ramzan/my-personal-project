@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-label="Men's polo mix">
+  <rect width="480" height="600" fill="#d7ddd8"/>
+  <path d="M150 170h180l20 40v250H130V210z" fill="#2c3a36"/>
+  <path d="M190 170c0 40 100 40 100 0" fill="#1b2421"/>
+  <rect x="220" y="250" width="40" height="12" fill="#c9a227"/>
+  <text x="240" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#24302c">Men's polo</text>
+</svg>

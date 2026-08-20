@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-label="Men's formal shirt">
+  <rect width="480" height="600" fill="#e3e6ea"/>
+  <path d="M140 150h200l18 36v280H122V186z" fill="#f7f8fa"/>
+  <path d="M210 150l30 70 30-70" fill="#dfe4ea"/>
+  <circle cx="248" cy="250" r="5" fill="#1a1714"/>
+  <circle cx="248" cy="290" r="5" fill="#1a1714"/>
+  <text x="240" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#333841">Formal shirt</text>
+</svg>

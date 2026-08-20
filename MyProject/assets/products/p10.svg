@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-label="Chiffon dupatta pack">
+  <rect width="480" height="600" fill="#efe6f0"/>
+  <path d="M80 160c80 40 240-40 320 20v40c-80-50-240 30-320-10z" fill="#c9a0c4"/>
+  <path d="M80 250c90 50 230-60 320 10v50c-90-60-230 30-320-8z" fill="#8e5e8a"/>
+  <path d="M80 360c90 30 240-40 320 8v40c-90-40-230 20-320-8z" fill="#d8b7d4"/>
+  <text x="240" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#4a3348">Dupatta pack</text>
+</svg>

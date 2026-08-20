@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" role="img" aria-label="Western crop top">
+  <rect width="480" height="600" fill="#f0d6d2"/>
+  <path d="M150 190h180v150H150z" fill="#d24b5a"/>
+  <path d="M150 190c30-50 150-50 180 0" fill="#b63b4a"/>
+  <text x="240" y="540" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#5a2a30">Western top</text>
+</svg>

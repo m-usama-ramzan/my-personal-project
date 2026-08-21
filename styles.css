@@ -11,7 +11,8 @@
   --ok: #2f5d3a;
   --warn: #8a5a12;
   --out: #8a4a44;
-  --header-h: 4.75rem;
+  --logo-pink: #f3c4c0;
+  --header-h: 5.25rem;
   --header-bg: #000000;
   --drawer-w: 18rem;
 }
@@ -24,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 [hidden] {
@@ -37,6 +39,7 @@ body {
   line-height: 1.55;
   color: var(--ink);
   background: var(--bg);
+  overflow-x: hidden;
 }
 
 body.drawer-open {
@@ -65,48 +68,73 @@ h3 {
   position: sticky;
   top: 0;
   z-index: 20;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr 2.5rem;
   align-items: center;
-  justify-content: space-between;
   gap: 0.75rem;
   min-height: var(--header-h);
-  padding: 0.45rem 1rem;
+  padding: 0.4rem 1rem;
   background: var(--header-bg);
   border-bottom: 1px solid #1c1c1c;
 }
 
+.header-spacer {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 .logo {
-  display: flex;
-  align-items: center;
+  justify-self: center;
   min-width: 0;
-  max-width: calc(100% - 3.25rem);
   text-decoration: none;
+  color: var(--logo-pink);
 }
 
-.logo img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-height: 3.75rem;
-  max-width: 100%;
-  object-fit: contain;
-  object-position: left center;
+.logo-mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 5.4rem;
+  height: 5.4rem;
 }
 
-.logo--drawer {
-  max-width: calc(100% - 3.25rem);
+.logo-mark__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--logo-pink);
 }
 
-.logo--drawer img {
-  max-height: 3.35rem;
+.logo-mark__text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Great Vibes", cursive;
+  font-size: 1.05rem;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
 }
 
-.logo--footer {
-  max-width: 7.5rem;
+.logo-mark__text span:last-child {
+  margin-left: 0.35rem;
 }
 
-.logo--footer img {
-  max-height: 5.5rem;
+.logo--drawer .logo-mark,
+.logo--footer .logo-mark {
+  width: 4.6rem;
+  height: 4.6rem;
+}
+
+.logo--drawer .logo-mark__text,
+.logo--footer .logo-mark__text {
+  font-size: 0.92rem;
+}
+
+.site-header .hamburger {
+  justify-self: start;
 }
 
 .icon-button {
@@ -199,10 +227,42 @@ main {
   width: min(72rem, calc(100% - 2rem));
   margin: 0 auto;
   padding-bottom: 3.5rem;
+  min-width: 0;
 }
 
 .hero {
   padding: 2.25rem 0 2rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.contact-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  max-width: 28rem;
+}
+
+.contact-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-list a {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.contact-list span {
+  color: var(--muted);
 }
 
 .eyebrow {
@@ -291,11 +351,27 @@ h1 {
 }
 
 .product-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: var(--paper);
   border: 1px solid var(--line);
+}
+
+.product-card__link {
+  display: block;
   text-decoration: none;
   color: inherit;
+  flex: 1;
+}
+
+.button--order {
+  margin: 0 0.95rem 0.55rem;
+  text-align: center;
+}
+
+.detail__body .button--order {
+  display: inline-block;
+  margin: 1rem 0 0;
 }
 
 .page-block {
@@ -458,21 +534,35 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
   padding: 1.5rem 1rem 2rem;
   background: var(--header-bg);
   color: #cfc6bc;
   text-align: center;
 }
 
-.site-footer p {
+.site-footer__name {
   margin: 0;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
+  font-size: 0.95rem;
 }
 
-.site-footer .logo--footer {
-  max-width: 7.5rem;
+.site-footer__nav,
+.site-footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem 1.1rem;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.site-footer a {
+  text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+  color: var(--logo-pink);
 }
 
 @media (min-width: 640px) {
@@ -490,16 +580,13 @@ h1 {
     padding-top: 3.5rem;
   }
 
-  .logo img {
-    max-height: 4.15rem;
+  .logo-mark {
+    width: 6.1rem;
+    height: 6.1rem;
   }
 
-  .logo--drawer img {
-    max-height: 3.6rem;
-  }
-
-  .logo--footer img {
-    max-height: 6.25rem;
+  .logo-mark__text {
+    font-size: 1.18rem;
   }
 
   .product-grid {
@@ -523,7 +610,8 @@ h1 {
     max-width: 14ch;
   }
 
-  .logo img {
-    max-height: 4.5rem;
+  .logo-mark {
+    width: 6.5rem;
+    height: 6.5rem;
   }
 }

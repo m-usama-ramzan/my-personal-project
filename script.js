@@ -14,8 +14,8 @@
   var viewAbout = document.getElementById("view-about");
   var viewContact = document.getElementById("view-contact");
   var products = Array.isArray(window.PRODUCTS) ? window.PRODUCTS : [];
-  var whatsapp = (window.STORE && window.STORE.whatsapp) || "923001234567";
-  var whatsappUrl = "https://wa.me/" + whatsapp;
+  var whatsappNumber = window.WHATSAPP_NUMBER || (window.STORE && window.STORE.whatsapp) || "";
+  var store = window.STORE || {};
 
   var FILTERS = {
     new: { title: "New Collection", note: "Items marked as new." },
@@ -46,6 +46,28 @@
       .replace(/"/g, "&quot;");
   }
 
+  function whatsappUrl(message) {
+    var url = "https://wa.me/" + String(whatsappNumber).replace(/[^\d]/g, "");
+    if (message) {
+      url += "?text=" + encodeURIComponent(message);
+    }
+    return url;
+  }
+
+  function generalWhatsAppMessage() {
+    return "Assalam o Alaikum, I wanted to ask about your leftover clothing stock.";
+  }
+
+  function productWhatsAppMessage(product) {
+    return (
+      "Assalam o Alaikum, I am interested in this product:\n\n" +
+      "Product: " + product.name + "\n" +
+      "Price: " + formatPrice(product.price) + "\n" +
+      "Product ID: #" + product.id + "\n\n" +
+      "Is this available?"
+    );
+  }
+
   function formatPrice(amount) {
     if (amount === null || amount === undefined) {
       return "";
@@ -69,12 +91,16 @@
       raw = "home";
     }
 
-    if (raw.indexOf("product/") === 0) {
-      return { type: "product", id: decodeURIComponent(raw.slice("product/".length)) };
-    }
+    try {
+      if (raw.indexOf("product/") === 0) {
+        return { type: "product", id: decodeURIComponent(raw.slice("product/".length)) };
+      }
 
-    if (raw.indexOf("q/") === 0) {
-      return { type: "search", query: decodeURIComponent(raw.slice(2)) };
+      if (raw.indexOf("q/") === 0) {
+        return { type: "search", query: decodeURIComponent(raw.slice(2)) };
+      }
+    } catch (error) {
+      return { type: "home" };
     }
 
     if (FILTERS[raw]) {
@@ -148,7 +174,8 @@
       : "";
 
     return (
-      '<a class="product-card" href="#product/' +
+      '<article class="product-card">' +
+      '<a class="product-card__link" href="#product/' +
       encodeURIComponent(product.id) +
       '">' +
       '<div class="product-card__media">' +
@@ -183,7 +210,16 @@
       "</p>" +
       "</div>" +
       "</div>" +
-      "</a>"
+      "</a>" +
+      (product.stockStatus === "sold-out"
+        ? ""
+        : '<button class="button button--order" type="button" data-add-cart="' +
+          escapeHtml(product.id) +
+          '">Add to cart</button>') +
+      '<a class="button button--order" href="' +
+      escapeHtml(whatsappUrl(productWhatsAppMessage(product))) +
+      '" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>' +
+      "</article>"
     );
   }
 
@@ -257,6 +293,14 @@
       "<p>" +
       escapeHtml(product.description) +
       "</p>" +
+      '<a class="button button--order" href="' +
+      escapeHtml(whatsappUrl(productWhatsAppMessage(product))) +
+      '" target="_blank" rel="noopener noreferrer">Order on WhatsApp</a>' +
+      (product.stockStatus === "sold-out"
+        ? ""
+        : '<button class="button button--order" type="button" data-add-cart="' +
+          escapeHtml(product.id) +
+          '">Add to cart</button>') +
       "</div></article>";
   }
 
@@ -353,11 +397,34 @@
     }
   }
 
-  function setWhatsAppLinks() {
-    var links = document.querySelectorAll("#whatsapp-link, #contact-whatsapp");
-    links.forEach(function (link) {
-      link.setAttribute("href", whatsappUrl);
+  function socialHref(value) {
+    if (!value || value.indexOf("YOUR_") === 0) {
+      return "#";
+    }
+    return value;
+  }
+
+  function bindStoreLinks() {
+    var generalUrl = whatsappUrl(generalWhatsAppMessage());
+    document.querySelectorAll("[data-whatsapp='general']").forEach(function (link) {
+      link.setAttribute("href", generalUrl);
     });
+
+    function bindSocial(name, value) {
+      document.querySelectorAll("[data-social='" + name + "']").forEach(function (link) {
+        var href = socialHref(value);
+        link.setAttribute("href", href);
+        if (href === "#") {
+          link.removeAttribute("target");
+        } else {
+          link.setAttribute("target", "_blank");
+          link.setAttribute("rel", "noopener noreferrer");
+        }
+      });
+    }
+
+    bindSocial("tiktok", store.tiktok);
+    bindSocial("facebook", store.facebook);
   }
 
   if (openButton) {
@@ -396,6 +463,19 @@
 
   window.addEventListener("hashchange", applyRoute);
 
-  setWhatsAppLinks();
+  bindStoreLinks();
   applyRoute();
+
+  if (window.ShopDB) {
+    ShopDB.getProducts().then(function (list) {
+      if (list && list.length) {
+        products = list;
+        window.PRODUCTS = list;
+        applyRoute();
+        if (window.Shop) {
+          Shop.refresh();
+        }
+      }
+    });
+  }
 })();

@@ -1,5 +1,15 @@
+const WHATSAPP_NUMBER = "923185012821";
+
+window.WHATSAPP_NUMBER = WHATSAPP_NUMBER;
+
 window.STORE = {
-  whatsapp: "923001234567"
+  name: "Brand's Leftover",
+  whatsapp: WHATSAPP_NUMBER,
+  tiktok: "YOUR_TIKTOK_URL",
+  facebook: "YOUR_FACEBOOK_URL",
+  shippingFee: 300,
+  taxRate: 0.04,
+  adminPin: "1234"
 };
 
 window.PRODUCTS = [
@@ -172,3 +182,4 @@ window.PRODUCTS = [
     isSale: true
   }
 ];
+

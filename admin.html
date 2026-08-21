@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Brand's Leftover</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="Brand's Leftover">
+      <span class="logo-mark">
+        <svg class="logo-mark__ring" viewBox="0 0 180 180" aria-hidden="true">
+          <path d="M36 86c10-46 98-52 112-10" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+          <path d="M28 98c20 48 102 50 124 6" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-mark__text">
+          <span>Brand's</span>
+          <span>Leftover</span>
+        </span>
+      </span>
+    </a>
+  </header>
+
+  <section id="admin-login" class="admin-login">
+    <h1>Admin</h1>
+    <p id="mode-label" class="lede"></p>
+    <form id="login-form">
+      <div class="field"><input name="email" type="email" placeholder="Firebase email (if connected)"></div>
+      <div class="field"><input name="password" type="password" placeholder="Firebase password (if connected)"></div>
+      <div class="field"><input name="pin" type="password" placeholder="Local PIN if Firebase is not connected"></div>
+      <button class="button" type="submit">Log in</button>
+    </form>
+  </section>
+
+  <section id="admin-app" class="admin-app" hidden>
+    <p class="notice" id="admin-notice"></p>
+    <p><button class="button" type="button" id="logout">Log out</button></p>
+
+    <h2>Orders</h2>
+    <div id="order-list" class="admin-grid"></div>
+
+    <h2>Upload product</h2>
+    <form id="product-form" class="product-admin">
+      <div class="field"><input name="name" placeholder="Product name" required></div>
+      <div class="field">
+        <select name="category" required>
+          <option value="Women">Women</option>
+          <option value="Unstitched">Unstitched</option>
+          <option value="Stitched">Stitched</option>
+          <option value="Accessories">Accessories</option>
+        </select>
+      </div>
+      <div class="field-row">
+        <div class="field"><input name="price" type="number" min="0" placeholder="Price" required></div>
+        <div class="field"><input name="oldPrice" type="number" min="0" placeholder="Old price (optional)"></div>
+      </div>
+      <div class="field"><textarea name="description" rows="3" placeholder="Description" required></textarea></div>
+      <div class="field">
+        <select name="stockStatus">
+          <option value="in-stock">In stock</option>
+          <option value="low-stock">Low stock</option>
+          <option value="sold-out">Sold out</option>
+        </select>
+      </div>
+      <label><input type="checkbox" name="isNew"> New</label>
+      <label><input type="checkbox" name="isSale"> Sale</label>
+      <div class="field"><input name="image" type="file" accept="image/*"></div>
+      <button class="button" type="submit">Save product</button>
+    </form>
+
+    <h2>Catalogue</h2>
+    <div id="admin-products" class="admin-grid"></div>
+  </section>
+
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js"></script>
+  <script src="products.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/backend.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
